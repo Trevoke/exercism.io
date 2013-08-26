@@ -24,3 +24,6 @@ scripts/boot.sh
 _yardoc
 doc/
 .approvals
+
+# Ignore Rubymine project files
+.idea
