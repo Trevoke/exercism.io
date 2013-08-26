@@ -12,7 +12,7 @@ class SubmissionsPresenter
 
   def create_headers
     if submissions.count == 1
-      submissions_are_not_approved? ? revision_headers : ['First & Final', 'Example']
+      submissions_are_approved? ? ['First & Final', 'Example'] : revision_headers
     else
       if submissions_are_approved?
         headers = revision_headers
@@ -27,8 +27,8 @@ class SubmissionsPresenter
     end
   end
 
-  def submissions_are_not_approved?
-    !submissions_are_approved?
+  def submissions
+    @submissions
   end
 
   def revision_headers
@@ -39,7 +39,8 @@ class SubmissionsPresenter
     submissions.map(&:state).include?('approved')
   end
 
-  def submissions
-    @submissions
+  def submissions_are_not_approved?
+    !submissions_are_approved?
   end
+
 end
