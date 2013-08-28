@@ -53,6 +53,7 @@ class ExercismApp < Sinatra::Base
       after: submissions.last,
       iterations: submissions
     }
+    # Exercism.current_curriculum.in(after.language).assign(after.slug).example
     erb :summary, locals: locals
   end
 

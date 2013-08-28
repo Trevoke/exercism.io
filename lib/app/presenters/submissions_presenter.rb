@@ -1,11 +1,36 @@
 class SubmissionsPresenter
 
-  def initialize submissions
-    @submissions = submissions
+  def initialize(args={})
+    @submissions = args.fetch :submissions
+    @example = args.fetch(:example, nil)
   end
 
   def headers
     @headers ||= create_headers
+  end
+
+  def submissions_info
+#    <% iterations.each_with_index do |iteration,index| %>
+#
+#      <%= erb :"code/submission", locals:
+#{ title: "Revision #{index + 1}",
+#          html:
+#{ id: "revision-#{index + 1}", style: "display: none;" },
+#          submission: iteration } %>
+#
+#    <% end %>
+    [{
+        title: 'Revision 1',
+        submission: submissions.first,
+        html: {
+            id: 'revision-1',
+            style: 'display: none;'
+        }
+    }]
+  end
+
+  def example
+    @example
   end
 
   private
